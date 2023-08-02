@@ -19,13 +19,19 @@ public class PersonalContact {
 	@Column(name = "p_contact_id")
 	private int id;
 	
-	@Column(name = "phone_number")
+	@Column(name = "phone_number", length=7)
 	private String phoneNumber;
+	
+	@Column(name = "cell_number", length=9)
+	private String cell_number;
+	
+	@Column(name = "email", length=30)
+	private String email;
 	
 	@OneToOne
 	@JoinColumn(name = "emp_id")
 	private Employee employee;
-
+	
 	public int getId() {
 		return id;
 	}
@@ -36,6 +42,22 @@ public class PersonalContact {
 
 	public String getPhoneNumber() {
 		return phoneNumber;
+	}
+	
+	public String getCell_number() {
+		return cell_number;
+	}
+
+	public void setCell_number(String cell_number) {
+		this.cell_number = cell_number;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public void setPhoneNumber(String phoneNumber) {
