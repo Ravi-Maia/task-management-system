@@ -8,6 +8,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
@@ -20,10 +22,10 @@ public class Employee {
 	@Column(name = "emp_id")
 	private int id;
 
-	@Column(name = "first_name")
+	@Column(name = "first_name", length=30)
 	private String first_name;
 
-	@Column(name = "last_name")
+	@Column(name = "last_name", length=40)
 	private String last_name;
 
 	@Column(name = "birth_date")
@@ -32,7 +34,8 @@ public class Employee {
 	@OneToOne(cascade = CascadeType.ALL, mappedBy = "employee")
 	private PersonalContact personalContact;
 
-	@OneToOne(cascade = CascadeType.ALL, mappedBy = "employee")
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "depart_id")
 	private Department department; 
 
 	public int getId() {
@@ -73,6 +76,7 @@ public class Employee {
 	public void setPersonalContact(PersonalContact personalContact) {
 		this.personalContact = personalContact;
 	}
+
 	public Department getDepartment() {
 		return department;
 	}
@@ -80,6 +84,6 @@ public class Employee {
 	public void setDepartment(Department department) {
 		this.department = department;
 	}
-
+	
 
 }

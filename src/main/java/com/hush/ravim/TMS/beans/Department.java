@@ -1,12 +1,13 @@
 package com.hush.ravim.TMS.beans;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -24,9 +25,8 @@ public class Department {
 	@Column(name = "number_employees")
 	private int number_employees;
 	
-	@OneToOne
-	@JoinColumn(name = "emp_id")
-	private Employee employee;
+	@OneToMany(mappedBy = "department")
+	private List<Employee> employee;
 
 	public int getId() {
 		return id;
@@ -52,11 +52,11 @@ public class Department {
 		this.number_employees = number_employees;
 	}
 
-	public Employee getEmployee() {
+	public List<Employee> getEmployee() {
 		return employee;
 	}
 
-	public void setEmployee(Employee employee) {
+	public void setEmployee(List<Employee> employee) {
 		this.employee = employee;
 	}
 	
