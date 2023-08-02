@@ -25,5 +25,38 @@ public class Department {
 	@OneToOne
 	@JoinColumn(name = "emp_id")
 	private Employee employee;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getNumber_employees() {
+		return number_employees;
+	}
+
+	public void setNumber_employees(int number_employees) {
+		this.number_employees = number_employees;
+	}
+
+	public Employee getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
+	
 	
 }
