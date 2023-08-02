@@ -30,6 +30,8 @@ public class Employee {
 	private Date birth_date;
 	
 	
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "employee")
+	private Department department; 
 	
 	@OneToOne(cascade = CascadeType.ALL, mappedBy = "employee")
 	private PersonalContact personalContact;
