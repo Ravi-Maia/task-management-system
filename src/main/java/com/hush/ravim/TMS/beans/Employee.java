@@ -1,6 +1,14 @@
 package com.hush.ravim.TMS.beans;
 
 import java.sql.Date;
+import java.time.LocalDate;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonFormat.Shape;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -12,6 +20,8 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 
 @Entity
 @Table(name = "tb_employee")
@@ -27,15 +37,19 @@ public class Employee {
 
 	@Column(name = "last_name", length=40)
 	private String last_name;
-
-	@Column(name = "birth_date")
+	
+	
+	@Temporal(TemporalType.DATE)
+	@Column(name = "birth_date")	
 	private Date birth_date;
 
 	@OneToOne(cascade = CascadeType.ALL, mappedBy = "employee")
+	@JsonIgnoreProperties("employee")
 	private PersonalContact personalContact;
 
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "depart_id")
+	@JsonIgnoreProperties("employee")
 	private Department department; 
 
 	public int getId() {
@@ -65,7 +79,7 @@ public class Employee {
 	public Date getBirth_date() {
 		return birth_date;
 	}
-
+ 
 	public void setBirth_date(Date birth_date) {
 		this.birth_date = birth_date;
 	}
