@@ -38,6 +38,8 @@ public class Employee {
 	@Column(name = "last_name", length=40)
 	private String last_name;
 	
+	@Column(name = "job_title", length=40)
+	private String job_title;
 	
 	@Temporal(TemporalType.DATE)
 	@Column(name = "birth_date")	
@@ -74,6 +76,14 @@ public class Employee {
 
 	public void setLast_name(String last_name) {
 		this.last_name = last_name;
+	}
+	
+	public String getJob_title() {
+		return job_title;
+	}
+
+	public void setJob_title(String job_title) {
+		this.job_title = job_title;
 	}
 
 	public Date getBirth_date() {
