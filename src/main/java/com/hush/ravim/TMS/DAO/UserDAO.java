@@ -9,3 +9,4 @@ public interface UserDAO extends CrudRepository<User, Integer>{
 	public User findByPasswordAndUserName(String password, String userName);
 	
 }
+ 
